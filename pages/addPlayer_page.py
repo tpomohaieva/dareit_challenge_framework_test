@@ -9,6 +9,7 @@ class AddPlayerPage(BasePage):
     sign_out_link_xpath = "//ul[2]//div[@role='button'][2]"
     add_player_form_xpath = "//*[@id='__next']//form"
     add_player_form_title_xpath = "//form//*[contains(@class, 'h5')]"
+    player_added_form_title_text = "Edit player Test Testowski"
     email_field_xpath = "//input[@name='email']"
     name_field_xpath = "//input[@name='name']"
     surname_field_xpath = "//input[@name='surname']"
@@ -30,8 +31,37 @@ class AddPlayerPage(BasePage):
     add_youtube_button_xpath = "//button[@aria-label='Add link to Youtube']"
     submit_button_xpath = "//button[@type='submit']"
     clear_button_xpath = "//button[@type='submit']//following-sibling::button"
+    add_player_url = "https://scouts-test.futbolkolektyw.pl/en/players/add"
+    expected_title = "Add player"
+    expected_title_player_added = "Edit player Test Testowski"
 
+    def title_of_the_page(self):
+        assert self.get_page_title(self.add_player_url) == self.expected_title
 
+    def type_in_email(self, email):
+        self.field_send_keys(self.email_field_xpath, email)
 
+    def type_in_name(self, name):
+        self.field_send_keys(self.name_field_xpath, name)
 
+    def type_in_surname(self, surname):
+        self.field_send_keys(self.surname_field_xpath, surname)
+
+    def type_in_phone(self, phone):
+        self.field_send_keys(self.phone_field_xpath, phone)
+
+    def type_in_age(self, age):
+        self.field_send_keys(self.age_field_xpath, age)
+
+    def type_in_club(self, club):
+        self.field_send_keys(self.club_field_xpath, club)
+
+    def type_in_main_position(self, main_position):
+        self.field_send_keys(self.main_position_field_xpath, main_position)
+
+    def click_on_the_submit_button(self):
+        self.click_on_the_element(self.submit_button_xpath)
+
+    def player_added_title_of_the_page(self):
+        assert self.driver.title == self.expected_title_player_added
 
