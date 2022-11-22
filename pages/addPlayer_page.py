@@ -34,6 +34,8 @@ class AddPlayerPage(BasePage):
     add_player_url = "https://scouts-test.futbolkolektyw.pl/en/players/add"
     expected_title = "Add player"
     expected_title_player_added = "Edit player Test Testowski"
+    progress_bar_toaster_xpath = "//*[@role='alert']"
+    required_message_xpath = "//p[contains(@class, 'required')]"
 
     def title_of_the_page(self):
         assert self.get_page_title(self.add_player_url) == self.expected_title
@@ -62,6 +64,17 @@ class AddPlayerPage(BasePage):
     def click_on_the_submit_button(self):
         self.click_on_the_element(self.submit_button_xpath)
 
+    def click_on_the_clear_button(self):
+        self.click_on_the_element(self.clear_button_xpath)
+
+    def click_on_the_name_field(self):
+        self.click_on_the_element(self.name_field_xpath)
+
     def player_added_title_of_the_page(self):
+        self.wait_for_element_to_be_visible(self.progress_bar_toaster_xpath)
         assert self.driver.title == self.expected_title_player_added
+
+    def show_name_required_error(self):
+        self.wait_for_element_to_be_visible(self.required_message_xpath)
+        self.assert_element_text(self.driver, self.required_message_xpath, "Required")
 

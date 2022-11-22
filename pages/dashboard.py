@@ -1,5 +1,3 @@
-import time
-
 from pages.base_page import BasePage
 
 
@@ -8,6 +6,8 @@ class Dashboard(BasePage):
     main_page_link_xpath = "//ul[1]//div[@role='button'][1]"
     players_link_xpath = "//ul[1]//div[@role='button'][2]"
     language_select_xpath = "//ul[2]//div[@role='button'][1]"
+    language_pl_selected_text = "English"
+    language_en_selected_text = "Polski"
     sign_out_link_xpath = "//ul[2]//div[@role='button'][2]"
     players_count_panel_xpath = "//main/div[2]/div[1]/div"
     players_count_label_xpath = "//main/div[2]/div[1]/div/div[1]"
@@ -40,8 +40,14 @@ class Dashboard(BasePage):
     expected_title = "Scouts panel"
 
     def title_of_the_page(self):
-        time.sleep(5)
-        assert self.get_page_title(self.dashboard_page_url) == self.expected_title
+        self.wait_for_element_to_be_clickable(self.scouts_dev_team_link_xpath)
+        assert self.driver.title == self.expected_title
 
     def click_on_add_player(self):
         self.click_on_the_element(self.shortcuts_add_player_link_xpath)
+
+    def click_on_sign_out(self):
+        self.click_on_the_element(self.sign_out_link_xpath)
+
+    def click_on_change_language(self):
+        self.click_on_the_element(self.language_select_xpath)
