@@ -29,8 +29,8 @@ class TestAddPlayerPage(unittest.TestCase):
         dashboard.click_on_add_player()
         add_player = AddPlayerPage(self.driver)
         add_player.title_of_the_page()
-        self.driver.save_screenshot("./screenshots/add_player/add-player.png")
-        Image.open("./screenshots/add_player/add-player.png").show()
+        self.driver.save_screenshot("C:/Users/tpomo/Documents/GitHub/challenge_1_pomohaieva/test_cases/screenshots/add_player/add-player.png")
+        Image.open("C:/Users/tpomo/Documents/GitHub/challenge_1_pomohaieva/test_cases/screenshots/add_player/add-player.png").show()
         add_player.type_in_name("Test")
         add_player.type_in_surname("Testowski")
         add_player.type_in_age("01/01/1990")
@@ -39,8 +39,8 @@ class TestAddPlayerPage(unittest.TestCase):
         add_player.player_added_title_of_the_page()
         add_player.assert_element_text(self.driver, add_player.add_player_form_title_xpath,
                                        add_player.player_added_form_title_text)
-        self.driver.save_screenshot("./screenshots/add_player/player-added.png")
-        Image.open("./screenshots/add_player/player-added.png").show()
+        self.driver.save_screenshot("C:/Users/tpomo/Documents/GitHub/challenge_1_pomohaieva/test_cases/screenshots/add_player/player-added.png")
+        Image.open("C:/Users/tpomo/Documents/GitHub/challenge_1_pomohaieva/test_cases/screenshots/add_player/player-added.png").show()
 
     @classmethod
     def test_add_player_with_missing_required_data(self):  # ST08
@@ -55,8 +55,8 @@ class TestAddPlayerPage(unittest.TestCase):
         add_player.click_on_the_name_field()
         add_player.click_on_the_submit_button()
         add_player.show_name_required_error()
-        self.driver.save_screenshot("./screenshots/add_player/validation-error.png")
-        Image.open("./screenshots/add_player/validation-error.png").show()
+        self.driver.save_screenshot("C:/Users/tpomo/Documents/GitHub/challenge_1_pomohaieva/test_cases/screenshots/add_player/validation-error.png")
+        Image.open("C:/Users/tpomo/Documents/GitHub/challenge_1_pomohaieva/test_cases/screenshots/add_player/validation-error.png").show()
 
     @classmethod
     def test_clear_date_on_add_player_form(self):  # ST09
@@ -73,8 +73,8 @@ class TestAddPlayerPage(unittest.TestCase):
         add_player.type_in_phone("+48123456789")
         add_player.type_in_age("01/01/1990")
         add_player.type_in_main_position("Forward")
-        self.driver.save_screenshot("./screenshots/add_player/form-filled-in.png")
-        Image.open("./screenshots/add_player/form-filled-in.png").show()
+        self.driver.save_screenshot("C:/Users/tpomo/Documents/GitHub/challenge_1_pomohaieva/test_cases/screenshots/add_player/form-filled-in.png")
+        Image.open("C:/Users/tpomo/Documents/GitHub/challenge_1_pomohaieva/test_cases/screenshots/add_player/form-filled-in.png").show()
         add_player.click_on_the_clear_button()
         add_player.assert_element_text(self.driver, add_player.name_field_xpath, "")
         add_player.assert_element_text(self.driver, add_player.surname_field_xpath, "")
@@ -82,8 +82,8 @@ class TestAddPlayerPage(unittest.TestCase):
         add_player.assert_element_text(self.driver, add_player.age_field_xpath, "")
         add_player.assert_element_text(self.driver, add_player.name_field_xpath, "")
         add_player.assert_element_text(self.driver, add_player.main_position_field_xpath, "")
-        self.driver.save_screenshot("./screenshots/add_player/form-cleared.png")
-        Image.open("./screenshots/add_player/form-cleared.png").show()
+        self.driver.save_screenshot("C:/Users/tpomo/Documents/GitHub/challenge_1_pomohaieva/test_cases/screenshots/add_player/form-cleared.png")
+        Image.open("C:/Users/tpomo/Documents/GitHub/challenge_1_pomohaieva/test_cases/screenshots/add_player/form-cleared.png").show()
 
     @classmethod
     def tearDown(self):
