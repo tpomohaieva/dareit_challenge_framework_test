@@ -15,12 +15,12 @@ class TestAddPlayerPage(unittest.TestCase):
     def setUp(self):
         os.chmod(DRIVER_PATH, 755)
         self.driver = webdriver.Chrome(service=Service(executable_path=DRIVER_PATH))
-        self.driver.get("https://scouts-test.futbolkolektyw.pl/en/players/add")
+        self.driver.get("https://scouts.futbolkolektyw.pl/en/players/add")
         self.driver.fullscreen_window()
         self.driver.implicitly_wait(IMPLICITLY_WAIT)
 
     @classmethod
-    def test_add_player_with_valid_data(self):  # ST07
+    def test_add_player_with_valid_data(self):  # ST07, assertion error
         user_login = LoginPage(self.driver)
         user_login.type_in_email("user01@getnada.com")
         user_login.type_in_password("Test-1234")

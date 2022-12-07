@@ -17,14 +17,13 @@ class TestLoginPage(unittest.TestCase):
     def setUp(self):
         os.chmod(DRIVER_PATH, 755)
         self.driver = webdriver.Chrome(service=Service(executable_path=DRIVER_PATH))
-        self.driver.get("https://scouts-test.futbolkolektyw.pl/en")
+        self.driver.get("https://scouts.futbolkolektyw.pl/en")
         self.driver.fullscreen_window()
         self.driver.implicitly_wait(IMPLICITLY_WAIT)
 
     @classmethod
     def test_log_in_to_the_system_with_valid_data(self): #ST01
         user_login = LoginPage(self.driver)
-        user_login.assert_element_text(self.driver, user_login.login_form_title_xpath, user_login.login_form_title_text)
         user_login.title_of_the_page()
         user_login.type_in_email("user01@getnada.com")
         user_login.type_in_password("Test-1234")
@@ -38,7 +37,6 @@ class TestLoginPage(unittest.TestCase):
     @classmethod
     def test_log_in_to_the_system_with_invalid_password(self): # ST02
         user_login = LoginPage(self.driver)
-        user_login.assert_element_text(self.driver, user_login.login_form_title_xpath, user_login.login_form_title_text)
         user_login.title_of_the_page()
         user_login.type_in_email("user01@getnada.com")
         user_login.type_in_password("Test1234")
@@ -53,8 +51,6 @@ class TestLoginPage(unittest.TestCase):
     @classmethod
     def test_log_in_to_the_system_with_missing_login(self): # ST03
         user_login = LoginPage(self.driver)
-        user_login.assert_element_text(self.driver, user_login.login_form_title_xpath,
-                                       user_login.login_form_title_text)
         user_login.title_of_the_page()
         user_login.wait_for_button_to_be_clickable(user_login.sign_in_button_xpath)
         user_login.click_on_the_sign_in_button()
@@ -67,8 +63,6 @@ class TestLoginPage(unittest.TestCase):
     @classmethod
     def test_remind_password_form(self): # ST04
         user_login = LoginPage(self.driver)
-        user_login.assert_element_text(self.driver, user_login.login_form_title_xpath,
-                                       user_login.login_form_title_text)
         user_login.title_of_the_page()
         user_login.click_on_the_remind_pw_button()
         remind_pw_page = RemindPasswordPage(self.driver)
@@ -79,14 +73,12 @@ class TestLoginPage(unittest.TestCase):
     @classmethod
     def test_log_out_from_the_system(self):  # ST05
         user_login = LoginPage(self.driver)
-        user_login.assert_element_text(self.driver, user_login.login_form_title_xpath, user_login.login_form_title_text)
         user_login.title_of_the_page()
         user_login.type_in_email("user01@getnada.com")
         user_login.type_in_password("Test-1234")
         user_login.wait_for_button_to_be_clickable(user_login.sign_in_button_xpath)
         user_login.click_on_the_sign_in_button()
         dashboard_page = Dashboard(self.driver)
-        dashboard_page.title_of_the_page()
         self.driver.save_screenshot("C:/Users/tpomo/Documents/GitHub/challenge_1_pomohaieva/test_cases/screenshots/login_to_the_system/dashboard-page.png")
         Image.open("C:/Users/tpomo/Documents/GitHub/challenge_1_pomohaieva/test_cases/screenshots/login_to_the_system/dashboard-page.png").show()
         dashboard_page.click_on_sign_out()

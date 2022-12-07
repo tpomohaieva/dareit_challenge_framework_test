@@ -16,7 +16,7 @@ class TestDashboardPage(unittest.TestCase):
     def setUp(self):
         os.chmod(DRIVER_PATH, 755)
         self.driver = webdriver.Chrome(service=Service(executable_path=DRIVER_PATH))
-        self.driver.get("https://scouts-test.futbolkolektyw.pl/en/players/add")
+        self.driver.get("https://scouts.futbolkolektyw.pl/en/players/add")
         self.driver.fullscreen_window()
         self.driver.implicitly_wait(IMPLICITLY_WAIT)
 
@@ -27,7 +27,7 @@ class TestDashboardPage(unittest.TestCase):
         user_login.type_in_password("Test-1234")
         user_login.click_on_the_sign_in_button()
         dashboard_page = Dashboard(self.driver)
-        dashboard_page.title_of_the_page()
+        # dashboard_page.title_of_the_page()
         self.driver.save_screenshot("C:/Users/tpomo/Documents/GitHub/challenge_1_pomohaieva/test_cases/screenshots/check_dashboard/before-lang-change.png")
         Image.open("C:/Users/tpomo/Documents/GitHub/challenge_1_pomohaieva/test_cases/screenshots/check_dashboard/before-lang-change.png").show()
         dashboard_page.click_on_change_language()

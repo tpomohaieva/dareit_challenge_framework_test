@@ -31,7 +31,7 @@ class AddPlayerPage(BasePage):
     add_youtube_button_xpath = "//button[@aria-label='Add link to Youtube']"
     submit_button_xpath = "//button[@type='submit']"
     clear_button_xpath = "//button[@type='submit']//following-sibling::button"
-    add_player_url = "https://scouts-test.futbolkolektyw.pl/en/players/add"
+    add_player_url = "https://scouts.futbolkolektyw.pl/en/players/add"
     expected_title = "Add player"
     expected_title_player_added = "Edit player Test Testowski"
     progress_bar_toaster_xpath = "//*[@role='alert']"
